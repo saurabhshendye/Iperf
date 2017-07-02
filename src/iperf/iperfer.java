@@ -4,6 +4,7 @@
 package iperf;
 
 import Transport.TCPReceiver;
+import Transport.TCPSender;
 import util.argumentParser;
 
 import java.io.IOException;
@@ -19,7 +20,9 @@ public class iperfer
         {
             if (parser.isClient())
             {
-
+                Socket socket = new Socket(parser.ServerName, parser.port);
+                TCPSender sender = new TCPSender(socket, parser.time);
+                sender.sendData();
             }
             else
             {
