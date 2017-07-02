@@ -3,11 +3,16 @@
  */
 package iperf;
 
+import Transport.TCPReceiver;
 import util.argumentParser;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class iperfer
 {
-    public static void main(String args[])
+    public static void main(String args[]) throws IOException
     {
         argumentParser parser = new argumentParser(args);
         if (parser.validityCheck())
@@ -18,7 +23,10 @@ public class iperfer
             }
             else
             {
-
+                ServerSocket server = new ServerSocket(parser.port);
+                Socket clientSocket = server.accept();
+                TCPReceiver receiver = new TCPReceiver(clientSocket);
+                receiver.start();
             }
         }
         else

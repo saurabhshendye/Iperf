@@ -9,9 +9,9 @@ public class argumentParser
     private boolean clientFlag;
     private String [] args;
 //    private boolean validFlag = false;
-    private String ServerName = null;
-    private int port;
-    private int time;
+    public String ServerName = null;
+    public int port;
+    public int time;
 
     /**
      *
