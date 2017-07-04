@@ -47,12 +47,12 @@ public class TCPReceiver extends Thread
             }
             catch (IOException e)
             {
-                e.printStackTrace();
                 long endTime = System.currentTimeMillis();
-                long total = endTime - this.startTime;
+                double total = (endTime - this.startTime)/1000.0d;
                 double rate = (count *1.0d) / total;
                 System.out.println("Total data Received: " + count + " Kb"
                         + "Time: " + total + "sec" + "Data Rate: " + rate + " kbps");
+                break;
             }
         }
     }

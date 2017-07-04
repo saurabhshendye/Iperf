@@ -34,24 +34,29 @@ public class argumentParser
             if (args.length == 7)
             {
                 int i = 1;
-                while (i < args.length && args[i].startsWith("-"))
+                while (i < args.length-1)
                 {
-                    switch (args[i])
+                    if (args[i].startsWith("-"))
                     {
-                        case "-h":
-                            this.ServerName = args[i++];
-                            break;
-                        case "-p":
-                            this.port = Integer.parseInt(args[i++]);
-                            break;
-                        case "-t":
-                            this.time = Integer.parseInt(args[i++]);
-                            break;
-                        default:
-                            this.printUsage();
-                            return false;
+                        switch (args[i])
+                        {
+                            case "-h":
+                                this.ServerName = args[i+1];
+                                break;
+                            case "-p":
+                                this.port = Integer.parseInt(args[i+1]);
+                                break;
+                            case "-t":
+                                this.time = Integer.parseInt(args[i+1]);
+                                break;
+                            default:
+                                this.printUsage();
+                                return false;
 
+                        }
                     }
+
+                    i++;
                 }
 
                 if (port <= 1024 || port > 65536)

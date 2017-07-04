@@ -1,13 +1,14 @@
 package Transport;
 
+/**
+ * Created by Saurabh on 6/30/2017.
+ */
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Random;
 
-/**
- * Created by Saurabh on 6/30/2017.
- */
 public class TCPSender
 {
     private Socket socket;
@@ -39,7 +40,7 @@ public class TCPSender
     public void sendData() throws IOException
     {
         long startTime = System.currentTimeMillis();
-        while (System.currentTimeMillis() - startTime != time)
+        while (System.currentTimeMillis() - startTime < time*1000)
         {
             dout.write(data);
             dout.flush();
